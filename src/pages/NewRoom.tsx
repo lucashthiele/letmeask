@@ -1,11 +1,15 @@
+//Dependências
+import { Link } from 'react-router-dom'
+//Images
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
-import { Link } from 'react-router-dom'
-
-import '../styles/auth.scss'
+//Componentes
 import { Button } from '../components/Button'
+//Styles
+import '../styles/auth.scss'
 
 export function NewRoom(){
+
     return(
         <div id="page-auth">
             <aside>
