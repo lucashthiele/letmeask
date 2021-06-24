@@ -23,7 +23,6 @@ export function NewRoom() {
       return;
     }
 
-
     const roomRef = database.ref('rooms');
 
     const firebaseRoom = roomRef.push({
@@ -31,7 +30,7 @@ export function NewRoom() {
       authorId: user?.id,
     })
 
-    history.push(`/rooms/${firebaseRoom.key}`);
+    history.push(`/admin/rooms/${firebaseRoom.key}`);
   }
 
   return (
