@@ -20,7 +20,7 @@ export function Room() {
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
   
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const { questions, title } = useRoom(roomId);
 
   async function handleSendQuestion(event: FormEvent) {
@@ -87,7 +87,7 @@ export function Room() {
                 <span>{user.name}</span>
               </div>
             ) : (
-              <span>Para enviar uma pergunta, <button>faça seu login</button> </span>
+              <span>Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login</button> </span>
             )}
             <Button type="submit" disabled={!user}>Enviar pergunta</Button>
           </div>
