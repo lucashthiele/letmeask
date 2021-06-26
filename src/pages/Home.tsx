@@ -38,6 +38,8 @@ export function Home() {
       return;
     }
 
+    if (roomRef.val().authorId)
+
     if (roomRef.val().endedAt){
       alert('Room is already closed.');
       return;
