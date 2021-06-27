@@ -7,21 +7,24 @@ import { AuthContextProvider } from './contexts/AuthContext'
 import { Room } from './pages/Room';
 import { AdminRoom } from './pages/AdminRoom';
 import { NotFound } from './pages/NotFound';
+import { ThemeContextProvider } from './contexts/ThemeContext'
 
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthContextProvider>
-        <Switch>
-          <Route path="/" exact component={Home}></Route>
-          <Route path="/rooms/new" exact component={NewRoom}></Route>
-          <Route path="/rooms/:id" component={Room}></Route>
-          <Route path="/admin/rooms/:id" component={AdminRoom}></Route>
+    <ThemeContextProvider>
+        <AuthContextProvider>
+          <Switch>
+            <Route path="/" exact component={Home}></Route>
+            <Route path="/rooms/new" exact component={NewRoom}></Route>
+            <Route path="/rooms/:id" component={Room}></Route>
+            <Route path="/admin/rooms/:id" component={AdminRoom}></Route>
 
-          <Route path="/notfound" component={NotFound}></Route>
-        </Switch>
-      </AuthContextProvider>
+            <Route path="/notfound" component={NotFound}></Route>
+          </Switch>
+        </AuthContextProvider>
+      </ThemeContextProvider>
     </BrowserRouter>
   );
 }

@@ -1,7 +1,9 @@
 #page-room {
+  min-height: 100vh;
+
   header {
     padding: 24px;
-    border-bottom: 1px solid #e2e2e2;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 
     .content {
       max-width: 1120px;
@@ -25,7 +27,7 @@
     }
   }
 
-  main{
+  main {
     max-width: 800px;
     margin: 0 auto;
 
@@ -33,9 +35,9 @@
       margin: 32px 0 24px;
       display: flex;
       align-items: center;
-      
+
       h1 {
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         font-size: 24px;
         color: #29292e;
       }
@@ -51,7 +53,7 @@
       }
     }
 
-    form{
+    form {
       textarea {
         width: 100%;
         border: 0;
@@ -68,9 +70,9 @@
         justify-content: space-between;
         align-items: center;
         margin-top: 16px;
-        
+
         .user-info {
-          display: flex; 
+          display: flex;
           align-items: center;
 
           img {
@@ -87,7 +89,6 @@
           }
         }
 
-
         > span {
           font-size: 14px;
           color: #737380;
@@ -103,14 +104,24 @@
             cursor: pointer;
           }
         }
-
-        
       }
-
     }
 
     .question-list {
       margin-top: 32px;
+    }
+  }
+
+  &.dark {
+    background: #423d33;
+
+    .room-title h1 {
+      color: #fff;
+    }
+
+    header {
+      background: #27241d;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
     }
   }
 }

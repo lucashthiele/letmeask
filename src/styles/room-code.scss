@@ -15,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
   }
 
   span {
@@ -25,5 +26,13 @@
     width: 240px;
     font-size: 14px;
     font-weight: 500;
+  }
+
+  &.dark {
+    background: #423d33;
+
+    span {
+      color: #fefefe;
+    }
   }
 }

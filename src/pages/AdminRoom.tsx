@@ -2,6 +2,8 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
 import logoImg from '../assets/images/logo.svg';
+import logoDarkImg from '../assets/images/logo-dark.svg'
+import { useTheme } from '../hooks/useTheme';
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
@@ -13,6 +15,7 @@ import { useRoom } from '../hooks/useRoom';
 import '../styles/room.scss'
 import { database } from '../services/firebase';
 import { useEffect } from 'react';
+import { SwitchButton } from '../components/SwitchButton';
 
 
 type RoomParams = {
@@ -24,22 +27,23 @@ export function AdminRoom() {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { user } = useAuth();
+  const { theme } = useTheme();
 
   const { questions, title } = useRoom(roomId);
-  
+
   useEffect(() => {
-    async function verifyUserAdmin(){
+
+    async function verifyUserAdmin() {
       const roomRef = await database.ref(`rooms/${roomId}`).get();
-  
+
       if (!user) {
         history.push('/notfound');
-      }else if (user?.id !== roomRef.val().authorId) {
+      } else if (user?.id !== roomRef.val().authorId) {
         history.push('/notfound');
       }
     }
 
     verifyUserAdmin();
-
   }, [history, roomId, user])
 
   async function handleQuestionStatusChanged(questionId: string, action: string) {
@@ -74,11 +78,12 @@ export function AdminRoom() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme === 'dark' ? 'dark' : ''}>
       <header>
         <div className="content">
-          <img src={logoImg} alt="LetMeAsk" />
+          <img src={theme === 'light' ? logoImg : logoDarkImg} alt="LetMeAsk" />
           <div>
+            <SwitchButton />
             <RoomCode code={roomId} />
             <Button
               isOutlined

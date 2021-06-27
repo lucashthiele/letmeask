@@ -1,21 +1,27 @@
-//Dependências
+
 import { useHistory } from 'react-router-dom'
-//Images 
-import illustrationImg from '../assets/images/illustration.svg'
-import logoImg from '../assets/images/logo.svg'
-import googleIconImg from '../assets/images/google-icon.svg'
-//Componentes
-import { Button } from '../components/Button'
-//Styles
-import '../styles/auth.scss'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent, useState } from 'react'
 import { database } from '../services/firebase'
+
+import illustrationImg from '../assets/images/illustration.svg'
+import logoImg from '../assets/images/logo.svg'
+import logoDarkImg from '../assets/images/logo-dark.svg'
+
+import googleIconImg from '../assets/images/google-icon.svg'
+
+import { Button } from '../components/Button'
+import { SwitchButton } from '../components/SwitchButton'
+
+import '../styles/auth.scss'
+import { useTheme } from '../hooks/useTheme'
 
 export function Home() {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
   const [roomCode, setRoomCode] = useState('');
+
+  const { theme, toggleTheme } = useTheme(); 
 
   async function handleCreateRoom() {
     if (!user) {
@@ -50,19 +56,19 @@ export function Home() {
 
   return (
     <div id="page-auth">
-      <aside>
+      <aside className={theme === 'dark' ? 'dark' : ''}>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de Q&amp;A ao-vivo</strong>
         <p>Tire as dúvidas da sua audiência em tempo real</p>
       </aside>
-      <main>
-        <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
+      <main className={theme === 'dark' ? 'dark' : ''}>
+        <SwitchButton className='switch' onClick={toggleTheme}/>
+        <div className='main-content'>
+          <img src={theme === 'light' ? logoImg : logoDarkImg} alt="Letmeask" />
           <button className="create-room" onClick={handleCreateRoom}>
             <img src={googleIconImg} alt="Google" />
             Crie sua sala com o Google
           </button>
-
           <div className="separator">
             ou entre em uma sala
           </div>

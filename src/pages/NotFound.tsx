@@ -16,7 +16,7 @@ export function NotFound() {
     <div className="container">
         <img src={notFoundImg} alt="404" />
 
-        <h3>Ops... Parece que a pagina que você está procurando não existe</h3> 
+        <h3>Ops... Parece que a página que você está procurando não existe</h3> 
         <h3>Retorne ao ínicio clicando no botão abaixo</h3>
         
         <Button onClick={handleReturnHome}>Retornar a Home</Button>

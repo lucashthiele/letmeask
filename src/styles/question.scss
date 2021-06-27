@@ -11,12 +11,37 @@
   &.highlighted {
     background: #f4f0ff;
     border: 1px solid #835afd;
-    
+
     footer .user-info span {
       color: #292923;
     }
   }
-  
+
+  &.dark {
+    background: #504a40;
+
+    p {
+      color: #fefefe !important;
+    }
+
+    & + .answered {
+      background: #27241d;
+
+      p {
+        color: #656565 !important;
+      }
+    }
+
+    & + .highlighted {
+      background: #625d52;
+      border: 2px solid #835afd;
+
+      footer .user-info span {
+        color: #dbdcdd;
+      }
+    }
+  }
+
   &.answered {
     background: #dbdcdd;
   }
@@ -32,15 +57,15 @@
     margin-top: 24px;
 
     .user-info {
-      display: flex; 
+      display: flex;
       align-items: center;
-      
+
       img {
         width: 32px;
         height: 32px;
         border-radius: 50%;
       }
-      
+
       span {
         margin-left: 8px;
         color: #737380;
@@ -64,7 +89,7 @@
         align-items: flex-end;
         color: #737380;
         gap: 8px;
-        
+
         &.liked {
           color: #835afd;
 
@@ -74,10 +99,9 @@
         }
       }
 
-      &:hover{
+      &:hover {
         filter: brightness(0.7);
       }
-
     }
   }
 }

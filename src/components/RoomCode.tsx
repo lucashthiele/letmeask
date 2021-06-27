@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useTheme } from '../hooks/useTheme';
 
 import copyImg from '../assets/images/copy.svg';
 import '../styles/room-code.scss'
@@ -13,17 +14,18 @@ type RoomParams = {
 
 export function RoomCode(props: RoomCodeProps){
   const params = useParams<RoomParams>();
+  const { theme } = useTheme();
 
   function copyRoomCodeToClipboard(){
       navigator.clipboard.writeText(props.code);
   }
 
   return(
-    <button className="room-code" onClick={copyRoomCodeToClipboard}>
+    <button className={`room-code ${theme === 'dark' ? 'dark' : ''}`} onClick={copyRoomCodeToClipboard}>
       <div>
         <img src={copyImg} alt="" />
       </div>
-      <span>Sala {params.id}</span>
+      <span>Sala: {params.id}</span>
     </button>
   )
 }
